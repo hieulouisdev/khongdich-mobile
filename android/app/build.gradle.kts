@@ -32,14 +32,13 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
         // flutter_local_notifications requires core library desugaring
-        // (java.time on Android <26 isn't an issue since we set minSdk=26,
-        // but the AAR metadata check still wants this flag set).
+        // (java.time on Android <26 needs desugaring since minSdk=25).
         isCoreLibraryDesugaringEnabled = true
     }
 
     defaultConfig {
         applicationId = "com.khongdich.app"
-        minSdk = maxOf(flutter.minSdkVersion, 26)  // Android 8.0+ per plan §1
+        minSdk = 25  // Android 7.1.1+ (hard-coded, không phụ thuộc Flutter default)
         targetSdk = 36
         versionCode = flutter.versionCode
         versionName = flutter.versionName
